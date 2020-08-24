@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>button1</button>
+    <button>button2</button>
+    <button>button3</button>
+    <button>button4</button>
+    <button>button5</button>
+    <script>
+        //ES5中因为if和for没有块级作用域的概念，所以很多时候都必须借助于function的作用域来解决局部变量的问题
+        //ES6中加入了let，let是有if和for的块级作用域
+        //1.var没有块级作用域
+        // {
+        //     var name = 'cs'
+        //     console.log(name)
+        // }
+        // console.log(name)
+        //2.没有块级作用域的问题：if的块级
+        // var func
+        // if (true) {
+        //     var name = 'cs'
+        //     func = function () {
+        //         console.log(name)
+        //     }
+        // }
+        // name = 'kobe'
+        // func()
+        //3.没有块级作用域的问题：for的块级
+        // var btns = document.getElementsByTagName('button')
+        // for (var i = 0; i < btns.length; i++) {
+        //     // btns[i].addEventListener('click', function () {
+        //     //     console.log('button ' + i + ' clicked')
+        //     // })
+        //     //闭包可以解决问题：函数是一个作用域
+        //     (function (i) {
+        //         btns[i].addEventListener('click', function () {
+        //            console.log('button ' + i + ' clicked')
+        //         })
+        //     })(i)
+        // }
+        const btns = document.getElementsByTagName('button')
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener('click', function () {
+                console.log('button ' + i + ' clicked')
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for+v-bind</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!--点击的列表项变为红色， 其余列表项恢复黑色-->
+    <div id="app">
+        <ul>
+            <li v-for="(m, i) in movies" :class="getClasses(i)" v-on:click="getIndex(i)">{{m}}</li>
+        </ul>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                movies: ['星际穿越', '大话西游', '少年派', '盗梦空间'],
+                index: 0
+            },
+            methods: {
+                getClasses: function (i) {
+                    if (this.index == i) {
+                        return {active: true}
+                    } else {
+                        return {active: false}
+                    }
+                    
+                },
+                getIndex: function(i) {
+                    this.index = i
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--.stop：阻止事件冒泡-->
+    <div id="app">
+        <div @click="divClick">
+            div
+            <button @click.stop="btnClick">button</button>
+        </div>
+        <br>
+        <!--.prevent：阻止默认事件-->
+        <form action="baidu">
+            <input type="submit" value="提交" @click.prevent="submitClick">
+        </form>
+        <!--监听键盘某个键帽的点击-->
+        <input type="text" @keyup.enter="keyUp">
+        <!--.once：只触发一次-->
+        <button @click.once="clickOnce">btn2</button>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                btnClick() {
+                    console.log('btnClick')
+                },
+                divClick() {
+                    console.log('divClick')
+                },
+                submitClick() {
+                    console.log('submitClick')
+                },
+                keyUp() {
+                    console.log('keyUp')
+                },
+                clickOnce() {
+                    console.log('clickOnce')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
