@@ -20,6 +20,11 @@
         <input type="checkbox" value="乒乓球" v-model="hobbies">乒乓球
         <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球
         <h2>{{hobbies}}</h2>
+        <br>
+        <!--值绑定 input的value通过v-bind动态绑定-->
+        <label v-for="item in originHobbies" :for="item">
+            <input type="checkbox" :value="item" :id="item" v-model="hobbies">{{item}}
+        </label>
     </div>
     <script src="../js/vue.js"></script>
     <script>
@@ -28,7 +33,8 @@
            data: {
                message: 'hello, world',
                isAgree: false,//单选框
-               hobbies: []//多选框
+               hobbies: [],//多选框
+               originHobbies: ['篮球','足球','羽毛球','乒乓球','台球']
            }
         })
     </script>
